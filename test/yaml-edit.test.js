@@ -23,21 +23,21 @@ plugins:
 `;
 
 describe('Yaml-edit', () => {
-  it('Init + dump', (done) => {
+  it('dump()', (done) => {
     const yamlEdit1 = require('../index.js')(sampleYaml);
     const out1 = yamlEdit1.dump();
     expect(out1).to.equal(sampleYaml);
     done();
   });
 
-  it('Load + dump', (done) => {
+  it('init() + dump()', (done) => {
     yamlEdit.init(sampleYaml + '#TESTING2');
     const out2 = yamlEdit.dump();
     expect(out2).to.equal(sampleYaml + '#TESTING2');
     done();
   });
 
-  it('insert doc into yaml (1st level)', (done) => {
+  it('insertChild (1st level)', (done) => {
     yamlEdit.init(sampleYaml);
     const ret = yamlEdit.insertChild('functions', {
       other: {
@@ -66,6 +66,34 @@ functions:
           method: get
       - sns: mySnsTopic
   hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+
+# Some comment here
+
+plugins:
+  - my-plugin
+`);
+    done();
+  });
+
+  it('insertChild (deeper level)', (done) => {
+    yamlEdit.init(sampleYaml);
+    const ret = yamlEdit.insertChild('functions.hello', {
+      timeout: 60
+    });
+    expect(ret).to.be.equal(null);
+    const out3 = yamlEdit.dump();
+    expect(out3).to.be.equal(`# Test yaml file
+
+service: testing
+
+functions:
+  hello:
+    timeout: 60
     handler: handler.hello
     events:
       - http:
