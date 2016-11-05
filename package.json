@@ -1,6 +1,6 @@
 {
   "name": "yaml-edit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Library for editing yaml files",
   "main": "index.js",
   "scripts": {
@@ -17,9 +17,9 @@
   "author": "Mikael Puittinen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SC5/yaml-edit/issues"
+    "url": "https://github.com/mpuittinen/yaml-edit/issues"
   },
-  "homepage": "https://github.com/SC5/yaml-edit#readme",
+  "homepage": "https://github.com/mpuittinen/yaml-edit#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.1.2"
