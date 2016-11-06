@@ -80,6 +80,18 @@ plugins:
     done();
   });
 
+  it('hasKey() returns true for existing key', (done) => {
+    yamlEdit.init(sampleYaml);
+    expect(yamlEdit.hasKey('functions.hello')).to.be.equal(true);
+    done();
+  });
+
+  it('hasKey() returns false for non-existing key', (done) => {
+    yamlEdit.init(sampleYaml);
+    expect(yamlEdit.hasKey('functions.non-existing')).to.be.equal(false);
+    done();
+  });
+
   it('insertChild (deeper level)', (done) => {
     yamlEdit.init(sampleYaml);
     const ret = yamlEdit.insertChild('functions.hello', {

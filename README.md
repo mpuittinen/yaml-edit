@@ -36,6 +36,10 @@ Target can also be a deeper in the hierarchy, e.g.
 If the insert is successful, `insertChild()` returns `null`, otherwise (e.g. if the target location cannot be found), 
 it returns an Error
 
+### Checking whether a key already exists
+
+Existance of a key can be checked with the `hasKey(string target)` method. Returns true if the key is found, false otherwise.
+
 ### Getting the resulting YAML string
 
 The resulting YAML can be returned using the `dump()` method. E.g.

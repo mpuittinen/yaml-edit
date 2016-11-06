@@ -79,6 +79,14 @@ module.exports = (input) => {
       yaml = input;
       return module.exports;
     },
+    hasKey: (place) => {
+      const parts = search(place);
+      if (parts[1].length == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
     insertChild: (place, doc) => {
       let parts = search(place);
       let begin = parts[0];
